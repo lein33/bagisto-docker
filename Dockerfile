@@ -37,8 +37,7 @@ RUN apt-get install -y libmagickwand-dev \
 # Habilitar el módulo de reescritura de Apache
 RUN a2enmod rewrite
 
-# Instalar Composer
-COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+
 
 # Clonar Bagisto desde GitHub (puedes cambiar esto por una copia local si ya lo tienes)
 RUN git clone https://github.com/bagisto/bagisto.git .
