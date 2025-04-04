@@ -1,5 +1,5 @@
 #!/bin/sh
 
 echo 'Running collecstatic...'
-ls
+cat .env
 php artisan serve
