@@ -71,10 +71,10 @@ WORKDIR $container_project_path
 
 RUN git clone https://github.com/bagisto/bagisto.git .
 RUN composer install 
+COPY ./.configs/.env.testing /var/www/html/bagisto/.env
 RUN php artisan key:generate && \
     php artisan config:cache && \
     php artisan route:cache && \
     php artisan view:cache
-COPY ./.configs/.env.testing /var/www/html/bagisto/.env
 
 
