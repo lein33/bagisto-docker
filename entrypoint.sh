@@ -3,8 +3,10 @@
 echo 'Running collecstatic...'
 pwd
 ls
+git clone https://github.com/bagisto/bagisto.git 
+cd bagisto
+composer install
 php artisan bagisto:install --skip-env-check --skip-admin-creation
-cat .env
 
 php artisan migrate --force
 php artisan storage:link 
