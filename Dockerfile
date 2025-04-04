@@ -84,7 +84,7 @@ RUN php artisan key:generate \
     && php artisan route:cache \
     && php artisan view:cache \
     && php artisan optimize
-COPY ./setup.sh ./
+COPY ./entrypoint.sh ./
 # Permisos
 #EXPOSE 80
 
