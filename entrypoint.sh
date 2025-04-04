@@ -2,5 +2,5 @@
 
 echo 'Running collecstatic...'
 pwd
-touch .env
 ls
+cat .env
