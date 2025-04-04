@@ -70,6 +70,7 @@ USER $user
 WORKDIR $container_project_path
 
 RUN git clone https://github.com/bagisto/bagisto.git .
+WORKDIR $container_project_path/bagisto
 RUN composer install 
 COPY ./.configs/.env.testing /var/www/html/bagisto/.env
 RUN php artisan key:generate && \
