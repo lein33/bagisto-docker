@@ -2,9 +2,10 @@
 
 echo 'Running collecstatic...'
 pwd
-ls
 git clone https://github.com/bagisto/bagisto.git 
 cd bagisto
+echo 'run bagisto'
+cat .env.example
 composer install
 php artisan bagisto:install --skip-env-check --skip-admin-creation
 
