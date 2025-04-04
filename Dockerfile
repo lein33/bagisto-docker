@@ -88,7 +88,7 @@ RUN php artisan key:generate \
 # Variables de entorno
 ENV APP_ENV=production
 ENV APP_DEBUG=false
-# ENV APP_URL=https://your-app-name.up.railway.app
+ENV APP_URL=https://bagisto-docker-production.up.railway.app
 
 CMD ["apache2-foreground"]
 # Cambiar Apache al puerto 8080 para Railway
