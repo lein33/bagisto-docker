@@ -2,5 +2,5 @@
 
 echo 'Running collecstatic...'
 pwd
-ls
+ls bagisto/
 php artisan serve
