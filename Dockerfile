@@ -70,9 +70,11 @@ USER $user
 WORKDIR $container_project_path
 
 RUN git clone https://github.com/bagisto/bagisto.git .
-COPY cp bagisto/ /var/www/html/
-RUN composer install
-RUN git reset --hard v2.3.0
+RUN composer install --no-interaction --prefer-dist --optimize-autoloader
+RUN php artisan key:generate && \
+    php artisan config:cache && \
+    php artisan route:cache && \
+    php artisan view:cache
 #COPY ./.configs/.env.testing /var/www/html/bagisto/.env
 
 
