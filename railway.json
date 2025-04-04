@@ -1,6 +1,6 @@
 {
   "$schema": "https://railway.com/railway.schema.json",
   "build": {
-    "buildCommand": "docker compose build && docker compose up -d && echo 'Please wait... Waiting for MySQL connection...'"
+    "buildCommand": "git clone https://github.com/bagisto/bagisto.git ."
     }
 }

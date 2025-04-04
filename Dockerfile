@@ -71,6 +71,6 @@ WORKDIR $container_project_path
 
 RUN git clone https://github.com/bagisto/bagisto.git .
 RUN composer install
-#RUN chown -R www-data:www-data /var/www/html && chmod -R 777 /var/www/html
+RUN git reset --hard v2.3.0
 COPY ./.configs/.env.testing /var/www/html/bagisto/.env
 
