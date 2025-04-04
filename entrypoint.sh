@@ -4,4 +4,4 @@ echo 'Running collecstatic...'
 pwd
 ls
 cat .env
-php artisan serve --host=bagisto-docker-production.up.railway.app --port=80
+php artisan serve --host=$HOST --port=80
