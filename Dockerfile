@@ -57,7 +57,6 @@ RUN mkdir -p /home/$user/.composer && \
 # setting apache
 COPY ./.configs/apache.conf /etc/apache2/sites-available/000-default.conf
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
-RUN sed -i 's/80/8080/g' /etc/apache2/ports.conf
 
 RUN a2enmod rewrite
 
@@ -85,14 +84,13 @@ RUN php artisan key:generate \
     && php artisan route:cache \
     && php artisan view:cache \
     && php artisan optimize
-
 # Permisos
-EXPOSE 8080
+#EXPOSE 80
 
 # Variables de entorno
-ENV APP_ENV=production
-ENV APP_DEBUG=false
-ENV APP_URL=https://bagisto-docker-production.up.railway.app
+# ENV APP_ENV=production
+# ENV APP_DEBUG=false
+# ENV APP_URL=https://bagisto-docker-production.up.railway.app
 
-CMD ["apache2-foreground"]
+CMD ["sh", "entrypoint.sh"]
 # Cambiar Apache al puerto 8080 para Railway
