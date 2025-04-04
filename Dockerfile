@@ -85,6 +85,8 @@ RUN php artisan key:generate \
     && php artisan optimize
 
 # Permisos
+EXPOSE 8080
+RUN sed -i 's/80/8080/g' /etc/apache2/ports.conf
 
 # Variables de entorno
 ENV APP_ENV=production
@@ -93,4 +95,3 @@ ENV APP_URL=https://bagisto-docker-production.up.railway.app
 
 CMD ["apache2-foreground"]
 # Cambiar Apache al puerto 8080 para Railway
-EXPOSE 8080
