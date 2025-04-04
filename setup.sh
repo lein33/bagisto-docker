@@ -1,5 +1,5 @@
 # just to be sure that no traces left
-docker-compose down -v
+#docker compose down -v
 
 # building and running docker-compose file
 docker compose build && docker compose up -d

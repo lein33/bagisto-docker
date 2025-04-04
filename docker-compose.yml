@@ -5,7 +5,7 @@ services:
     build:
       args:
         uid: 1000
-        user: $USER
+        user: lein
         container_project_path: /var/www/html/
       context: .
       dockerfile: ./Dockerfile
@@ -22,7 +22,7 @@ services:
       MYSQL_ROOT_HOST: "%"
       MYSQL_ROOT_PASSWORD: root
     ports:
-      - 3306:3306
+      - 3307:3306
     volumes:
       - ./.configs/mysql-data:/var/lib/mysql/
 
