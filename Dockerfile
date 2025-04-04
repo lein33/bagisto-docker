@@ -27,7 +27,6 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp && docke
 RUN apt-get install -y libmagickwand-dev \
     && pecl install imagick \
     && docker-php-ext-enable imagick
-
 # intl extension configure and install
 RUN docker-php-ext-configure intl && docker-php-ext-install intl
 
@@ -73,9 +72,9 @@ RUN git clone https://github.com/bagisto/bagisto.git .
 RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 WORKDIR $container_project_path/bagisto
 
-# COPY ./.configs/.env.testing /var/www/html/bagisto/.env
+COPY ./.configs/.env.testing /var/www/html/bagisto/.env
 
-# RUN php artisan key:generate && \
-#     php artisan config:cache && \
-#     php artisan route:cache && \
-#     php artisan view:cache
+RUN php artisan key:generate && \
+    php artisan config:cache && \
+    php artisan route:cache && \
+    php artisan view:cache
