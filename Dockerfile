@@ -84,12 +84,13 @@ RUN php artisan key:generate \
     && php artisan optimize
 
 # Permisos
-RUN chown -R www-data:www-data /var/www/html && chmod -R 755 /var/www/html
 
 # Variables de entorno
 ENV APP_ENV=production
 ENV APP_DEBUG=false
 # ENV APP_URL=https://your-app-name.up.railway.app
+RUN sed -i 's/80/8080/g' /etc/apache2/ports.conf /etc/apache2/sites-available/000-default.conf
 
+CMD ["apache2-foreground"]
 # Cambiar Apache al puerto 8080 para Railway
 EXPOSE 8080
