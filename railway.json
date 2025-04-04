@@ -1,6 +1,6 @@
 {
   "$schema": "https://railway.com/railway.schema.json",
   "build": {
-    "buildCommand": "./setup.sh"
+    "buildCommand": "docker compose build && docker compose up -d"
     }
 }
