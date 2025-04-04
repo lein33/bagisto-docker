@@ -51,9 +51,9 @@ RUN npm install -g npx
 # ARG user
 
 # adding user
-RUN useradd -G www-data,root -u 1000 -d /home/lein lein
-RUN mkdir -p /home/lein/.composer && \
-    chown -R lein:lein /home/lein
+RUN useradd -G www-data,root -u 1000 -d /home/bagisto bagisto
+RUN mkdir -p /home/bagisto/.composer && \
+    chown -R bagisto:bagisto /home/bagisto
 
 # setting apache
 COPY ./.configs/apache.conf /etc/apache2/sites-available/000-default.conf
@@ -63,9 +63,9 @@ RUN a2enmod rewrite
 # RUN chmod -R 775 $container_project_path
 # RUN chown -R $user:www-data $container_project_path
 RUN chmod -R 775 /var/www/html/
-RUN chown -R lein:www-data /var/www/html/
+RUN chown -R bagisto:www-data /var/www/html/
 # changing user
-USER lein
+USER bagisto
 
 # setting work directory
 WORKDIR /var/www/html/
