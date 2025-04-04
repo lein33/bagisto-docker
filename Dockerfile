@@ -15,7 +15,25 @@ RUN apt-get update && apt-get install -y \
     libxml2-dev \
     curl \
     && docker-php-ext-install pdo pdo_mysql zip gd
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp && docker-php-ext-install gd
+RUN apt-get install -y libmagickwand-dev \
+    && pecl install imagick \
+    && docker-php-ext-enable imagick
+    RUN docker-php-ext-configure intl && docker-php-ext-install intl
 
+    # other extensions install
+    RUN docker-php-ext-install bcmath calendar exif gmp mysqli pdo pdo_mysql zip
+    
+    # installing composer
+    COPY --from=composer:2.7 /usr/bin/composer /usr/local/bin/composer
+    
+    # installing node js
+    COPY --from=node:23 /usr/local/lib/node_modules /usr/local/lib/node_modules
+    COPY --from=node:23 /usr/local/bin/node /usr/local/bin/node
+    RUN ln -s /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm
+    
+    # installing global node dependencies
+    RUN npm install -g npx
 # Habilitar el módulo de reescritura de Apache
 RUN a2enmod rewrite
 
