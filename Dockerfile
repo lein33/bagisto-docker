@@ -89,7 +89,6 @@ RUN php artisan key:generate \
 ENV APP_ENV=production
 ENV APP_DEBUG=false
 # ENV APP_URL=https://your-app-name.up.railway.app
-RUN sed -i 's/80/8080/g' /etc/apache2/ports.conf /etc/apache2/sites-available/000-default.conf
 
 CMD ["apache2-foreground"]
 # Cambiar Apache al puerto 8080 para Railway
