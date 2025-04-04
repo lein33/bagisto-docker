@@ -74,6 +74,22 @@ RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 
 COPY ./.configs/.env.testing /var/www/html/bagisto/.env
 
-RUN php artisan config:cache && \
-    php artisan route:cache && \
-    php artisan view:cache
+RUN php artisan key:generate \
+    && php artisan storage:link \
+    && php artisan migrate --force \
+    && php artisan db:seed --force || true \
+    && php artisan config:cache \
+    && php artisan route:cache \
+    && php artisan view:cache \
+    && php artisan optimize
+
+# Permisos
+RUN chown -R www-data:www-data /var/www/html && chmod -R 755 /var/www/html
+
+# Variables de entorno
+ENV APP_ENV=production
+ENV APP_DEBUG=false
+# ENV APP_URL=https://your-app-name.up.railway.app
+
+# Cambiar Apache al puerto 8080 para Railway
+EXPOSE 8080
