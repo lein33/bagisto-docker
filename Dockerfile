@@ -70,21 +70,21 @@ USER $user
 # setting work directory
 WORKDIR $container_project_path
 
-RUN git clone https://github.com/bagisto/bagisto.git .
-RUN composer install --no-interaction --prefer-dist --optimize-autoloader
+# RUN git clone https://github.com/bagisto/bagisto.git .
+# RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 
-#WORKDIR $container_project_path/bagisto
+# #WORKDIR $container_project_path/bagisto
 
-# COPY ./.configs/.env.testing /var/www/html/.env
+# # COPY ./.configs/.env.testing /var/www/html/.env
 
-RUN php artisan key:generate \
-    && php artisan storage:link \
-    && php artisan migrate --force \
-    && php artisan db:seed --force || true \
-    && php artisan config:cache \
-    && php artisan route:cache \
-    && php artisan view:cache \
-    && php artisan optimize
+# RUN php artisan key:generate \
+#     && php artisan storage:link \
+#     && php artisan migrate --force \
+#     && php artisan db:seed --force || true \
+#     && php artisan config:cache \
+#     && php artisan route:cache \
+#     && php artisan view:cache \
+#     && php artisan optimize
 COPY ./entrypoint.sh ./
 # Permisos
 EXPOSE 80
