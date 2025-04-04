@@ -61,7 +61,7 @@ RUN a2enmod rewrite
 
 # setting up project from `src` folder
 RUN chmod -R 775 $container_project_path
-RUN chown -R $user:www-data $container_project_path
+RUN chown -R $user:www-data /var/www/html
 
 # changing user
 USER $user
