@@ -69,3 +69,5 @@ USER $user
 # setting work directory
 WORKDIR $container_project_path
 
+RUN git clone https://github.com/bagisto/bagisto.git .
+RUN composer install --no-interaction --prefer-dist --optimize-autoloader
