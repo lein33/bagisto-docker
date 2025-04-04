@@ -74,7 +74,6 @@ WORKDIR $container_project_path/bagisto
 
 COPY ./.configs/.env.testing /var/www/html/bagisto/.env
 
-RUN php artisan key:generate && \
-    php artisan config:cache && \
+RUN php artisan config:cache && \
     php artisan route:cache && \
     php artisan view:cache
