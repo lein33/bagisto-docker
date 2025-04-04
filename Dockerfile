@@ -61,17 +61,11 @@ RUN a2enmod rewrite
 
 # setting up project from `src` folder
 RUN chmod -R 775 $container_project_path
-RUN chown -R $user:www-data /var/www/html
+RUN chown -R $user:www-data $container_project_path
 
 # changing user
 USER $user
 
 # setting work directory
-#WORKDIR $container_project_path
-WORKDIR /var/www/html
-
-RUN git clone https://github.com/bagisto/bagisto.git .
-RUN composer install --no-interaction --prefer-dist --optimize-autoloader
-#COPY ./.configs/.env.testing /var/www/html/bagisto/.env
-
+WORKDIR $container_project_path
 
