@@ -87,7 +87,7 @@ RUN php artisan key:generate \
     && php artisan optimize
 COPY ./entrypoint.sh ./
 # Permisos
-#EXPOSE 80
+EXPOSE 80
 
 # Variables de entorno
 # ENV APP_ENV=production
