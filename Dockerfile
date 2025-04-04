@@ -73,6 +73,6 @@ RUN git clone https://github.com/bagisto/bagisto.git .
 RUN composer install
 RUN git reset --hard v2.3.0
 COPY ./.configs/.env.testing /var/www/html/bagisto/.env
-COPY /var/www/html/bagisto/public /var/www/html/bagisto/public
+COPY ./.configs/public /var/www/html/bagisto/public
 
 
