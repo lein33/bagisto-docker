@@ -56,6 +56,7 @@ RUN mkdir -p /home/$user/.composer && \
 
 # setting apache
 COPY ./.configs/apache.conf /etc/apache2/sites-available/000-default.conf
+RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 RUN a2enmod rewrite
 
 # setting up project from `src` folder
