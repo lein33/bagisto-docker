@@ -76,7 +76,7 @@ WORKDIR $container_project_path/bagisto
 RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 # RUN php artisan bagisto:install --skip-env-check --skip-admin-creation
 
-COPY ./.configs/.env.testing /var/www/html/.env
+COPY ./.configs/.env.testing /var/www/html/bagisto/.env
 
 RUN php artisan key:generate \
     && php artisan storage:link \
