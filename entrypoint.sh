@@ -6,6 +6,7 @@ git clone https://github.com/bagisto/bagisto.git
 cd bagisto
 echo 'run bagisto'
 cat .env.example
+cp .env.example .env
 composer install
 php artisan bagisto:install --skip-env-check --skip-admin-creation
 
