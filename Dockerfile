@@ -71,6 +71,8 @@ USER $user
 WORKDIR $container_project_path
 
 RUN git clone https://github.com/bagisto/bagisto.git .
+WORKDIR $container_project_path/bagisto
+
 RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 # RUN php artisan bagisto:install --skip-env-check --skip-admin-creation
 
